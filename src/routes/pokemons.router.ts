@@ -2,6 +2,7 @@ import { Router } from "express";
 import { getPokemonsController } from "../controller/pokemons/getPokemons.controller";
 import { getPokemonByNameController } from "../controller/pokemons/getPokemonsByName.controller";
 import { createPokemonController } from "../controller/pokemons/createPokemon.controller";
+import { validatePokemonBody } from "../middlewares/validationMiddleware";
 
 
 export const router = Router();
@@ -10,4 +11,4 @@ export const router = Router();
 
 router.get('/', getPokemonsController)
 router.get('/:name', getPokemonByNameController)
-router.post('/', createPokemonController)
+router.post('/', validatePokemonBody,createPokemonController)

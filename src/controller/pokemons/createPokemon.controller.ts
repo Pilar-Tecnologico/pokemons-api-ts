@@ -1,14 +1,13 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
-export async function createPokemonController(req: Request, res: Response) {
-    const { id, name, type, base_experience } = req.body
-    if(!id || !name || !type || !base_experience){
-        res.status(400).json({
-            error: 'BAD_REQUEST',
-            message: `There are missing params for this request`
-        })
+export async function createPokemonController(req: Request, res: Response, next: NextFunction) {
+    try {
+        throw new Error('InternalServerError')
+
+    } catch (error) {
+        next(error)
     }
-    res.status(200).json({
-        status: 'OK'
-    })
+    // res.status(200).json({
+    //     status: 'OK'
+    // })
 }
