@@ -6,9 +6,13 @@ import {router as nasaRouter} from './routes/nasa.router'
 
 import { logger } from './middlewares/logger.middleware'
 import { errorHandler } from './middlewares/errorHandler'
+import { connect } from './db/mongo'
+
 
 const app = express()
 const PORT = 3000
+
+connect()
 
 app.use(express.json())
 app.use('*', logger)

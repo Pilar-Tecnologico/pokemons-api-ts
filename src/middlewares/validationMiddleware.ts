@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import Joi, { ValidationError } from 'joi'
+import Joi from 'joi'
 
 export function validatePokemonBody(req: Request, res: Response, next: NextFunction) {
     const {body} = req
