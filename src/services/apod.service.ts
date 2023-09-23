@@ -5,7 +5,11 @@ export async function getApod({date, startDate, endDate}: {
     date?: string,
     startDate?: string,
     endDate?: string
-}): Promise<IApod> {
+}): Promise<{
+    fecha: string,
+    explicacion: string, 
+    titulo: string, 
+    url: string}> {
     const httpClient = axios.create({
         baseURL: 'https://api.nasa.gov',
         params: {
@@ -16,5 +20,10 @@ export async function getApod({date, startDate, endDate}: {
         }
     })
     const { data } = await httpClient.get<IApod>('/planetary/apod')
-    return data
+    return  {
+        fecha: data.date,
+        explicacion: data.explanation,
+        titulo: data.title,
+        url: data.url
+    }
 }

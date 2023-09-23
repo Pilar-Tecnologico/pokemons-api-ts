@@ -9,7 +9,7 @@ import { errorHandler } from './middlewares/errorHandler'
 import { connect } from './db/mongo'
 
 
-const app = express()
+export const app = express()
 const PORT = 3000
 
 connect()
